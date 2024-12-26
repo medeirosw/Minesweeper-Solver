@@ -36,7 +36,7 @@ class MinesweeperLPSolver():
     def __init__(self, board: Board, verbose: int = 0) -> None:
         self.board = board
         self.verbose = verbose
-        # TODO: Define the LP variables, objective and anything else you need
+
         self.x = cp.Variable((self.board.windowWidth, self.board.windowHeight), 'x')
         self.constraints: List[cp.constraints.constraint.Constraint] = [cp.sum(self.x) == self.board.mines, 0 <= self.x, self.x <= 1]
         self.objective: cp.problems.objective.Objective = cp.Maximize(0)
